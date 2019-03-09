@@ -1,0 +1,33 @@
+队列的基本操作总结：
+
+  typedef struct ringSQStack{
+	ElementType data[MaxSize];
+	int front;//指向队列头
+	int end;//指向队列尾
+} Stack;
+ 
+1. 简单的队列：
+   (1). 队列为空：stack->front == stack->end == -1;
+   (2). 队列已满：stack->end == MaxSize - 1;
+   (3). 在队头弹出元素，并将其赋值给e ：stack->front++; e = stack->data[stack->front];
+   (4). 在队尾加入元素 e :stack->end++;  stack->data[stack->end] = e;
+ 
+2. 环形队列：（可以最多存放MaxSize-1个）
+   (1). 队列为空：stack->front == stack->end ;
+   (2). 队列已满：(stack->end +1)%MaxSize == stack->front;
+   (3). 在队头弹出元素，并将其赋值给e ：stack->front = (stack->front+1)%MaxSize; e = stack->data[stack->front];
+   (4). 在队尾加入元素 e :stack->end = ((stack->end+1)%MaxSize;  stack->data[stack->end] = e;
+  
+3. 升级版环形队列：（可以最多存放MaxSize个）
+
+    typedef struct ringSQStack{
+	ElementType data[MaxSize];
+	int front;//指向队列头
+	int count;//元素个数
+   } Stack;
+
+   (1). 队列为空：stack->count == 0 ;
+   (2). 队列已满：count == MaxSize;
+   (3). 在队头弹出元素，并将其赋值给e ：stack->front = (stack->front+1)%MaxSize; e = stack->data[stack->front];
+   (4). 在队尾加入元素 e :end = (stack->end+1)%MaxSize;  stack->data[stack->end] = e;
+    其中其中 end = (stack->count + stack->front + MaxSize)%MaxSize;
