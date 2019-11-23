@@ -40,15 +40,7 @@ int main()
     return 0;
 }
 //findPath
-bool findPath(int inX,int inY,int outX,int outY,int maze[][7])
-{
-    Stack stack;
-    int x,y,di;
-    int find = 0;//定义找到的变量
-    stack.top = -1;
-    stack.top++;
-    stack.data[stack.top].i = inX;
-    stack.data[stack.top].j = inY;
+tack.data[stack.top].j = inY;
     stack.data[stack.top].di = -1;
     maze[inX][inY] = -1; //避免重复，当一个方块进栈时，将迷宫值改为-1
     while(stack.top > -1) // 栈不为空
@@ -65,30 +57,9 @@ bool findPath(int inX,int inY,int outX,int outY,int maze[][7])
             for(int i=0; i<=stack.top; i++)
             {
                 cout<<stack.data[i].i<<" "<<stack.data[i].j<<endl;
-            }
-            return true;
-        } 
-        find = 0;
-        while(di < 4 && find == 0)
-        {
-            //继续找下去
-            di++;
-            switch(di)
-            {
-            case 0:
-                x = stack.data[stack.top].i+1;
-                y = stack.data[stack.top].j;
-                break;
-            case 1:
-                x = stack.data[stack.top].i;
-                y = stack.data[stack.top].j+1;
-                break;
-            case 2:
-                x = stack.data[stack.top].i-1;
-                y = stack.data[stack.top].j;
-                break;
+return truddddddddDDdddd  break
             case 3:
-                x=stack.data[stack.top].i;
+                x=stack.data[sack.top].i;
                 y = stack.data[stack.top].j-1;
                 break;
 			default:
@@ -113,9 +84,4 @@ bool findPath(int inX,int inY,int outX,int outY,int maze[][7])
         {
             maze[stack.data[stack.top].i][stack.data[stack.top].j] = 0;
             stack.top--;
-        }
-
-    }
-    return false;
-}
-
+       
